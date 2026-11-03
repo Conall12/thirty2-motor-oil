@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" role="img" aria-labelledby="t">
+  <title id="t">Thirty2 Motor Oil Ireland</title>
+  <rect x="0" y="0" width="100" height="100" rx="22" fill="#111"/>
+  <path d="M50 14C50 14 25 45 25 61a25 25 0 0 0 50 0C75 45 50 14 50 14Z" fill="#f4f3f0"/>
+  <text x="50" y="71" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="25" fill="#111">32</text>
+  <text x="124" y="60" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="52" letter-spacing="-1.5" fill="#111">Thirty2</text>
+  <text x="126" y="86" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="13" letter-spacing="3" fill="#111">MOTOR OIL · IRELAND</text>
+</svg>
