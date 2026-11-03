@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passenger car oils | Thirty2 Motor Oil Ireland</title>
+  <meta name="description" content="Browse NK2X engine, gear and fleet oils by viscosity, oil type and pack size. Sales mockup with placeholder data.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Header (shared across pages) ===== -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="Thirty2 Motor Oil Ireland, home">
+        <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <rect width="100" height="100" rx="22" fill="#111"/>
+          <path d="M50 14C50 14 25 45 25 61a25 25 0 0 0 50 0C75 45 50 14 50 14Z" fill="#f4f3f0"/>
+          <text x="50" y="71" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="25" fill="#111">32</text>
+        </svg>
+        <span class="brand-text"><span class="brand-name">Thirty2</span><span class="brand-tag">Motor Oil · Ireland</span></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="shop.html" aria-current="page">Shop Oils</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="delivery.html">Delivery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" type="button" data-open-search aria-expanded="false" aria-controls="header-search" aria-label="Search products">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn" type="button" data-open-cart aria-label="Cart, 0 items">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/></svg>
+          <span class="badge" data-cart-count hidden>0</span>
+        </button>
+        <button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <form class="header-search" id="header-search" action="shop.html" role="search" hidden>
+      <div class="wrap">
+        <label class="visually-hidden" for="q-header">Search NK2X oils</label>
+        <input id="q-header" name="q" type="search" placeholder="Search by name or viscosity, e.g. 5W-30">
+        <button class="btn btn-dark" type="submit">Search</button>
+      </div>
+    </form>
+  </header>
+
+  <main id="main">
+    <!-- ===== Category header ===== -->
+    <div class="page-head">
+      <div class="wrap">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><span aria-current="page">Passenger car oils</span></li>
+          </ol>
+        </nav>
+        <h1 class="page-title">Passenger car oils</h1>
+        <p class="page-intro">NK2X engine, gear and fleet oils, stocked in Ireland. Filter by viscosity, oil type or pack size to find the right grade.</p>
+      </div>
+    </div>
+
+    <!-- ===== Filters + results ===== -->
+    <div class="wrap shop-layout">
+      <button class="btn btn-outline filters-toggle" type="button" aria-expanded="false" aria-controls="filters">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+        Filters <span class="filters-active" data-filter-count hidden></span>
+      </button>
+
+      <aside class="filters" id="filters" aria-labelledby="filters-title">
+        <div class="filters-head">
+          <h2 id="filters-title">Filters</h2>
+        </div>
+        <form id="filter-form" class="filters-form">
+          <!-- Filter groups are built from the catalogue in js/shop.js -->
+        </form>
+        <button class="btn btn-outline btn-block" type="button" data-clear-filters>Clear filters</button>
+      </aside>
+
+      <div class="shop-results">
+        <div class="shop-toolbar">
+          <div class="field shop-search">
+            <label for="shop-q">Search oils</label>
+            <input id="shop-q" type="search" placeholder="Name, viscosity or spec, e.g. C3" autocomplete="off">
+          </div>
+          <p class="result-count" id="result-count" aria-live="polite">11 products</p>
+          <div class="field shop-sort">
+            <label for="sort">Sort by</label>
+            <select id="sort">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price low–high</option>
+              <option value="price-desc">Price high–low</option>
+              <option value="name">Name A–Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="shop-grid" id="shop-grid"></div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <h2>No oils match those filters</h2>
+          <p>Try removing a filter or searching for a viscosity such as 5W-30.</p>
+          <button class="btn btn-dark" type="button" data-clear-filters>Clear filters</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Footer (shared across pages) ===== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="Thirty2 Motor Oil Ireland, home">
+            <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+              <rect width="100" height="100" rx="22"/>
+              <path d="M50 14C50 14 25 45 25 61a25 25 0 0 0 50 0C75 45 50 14 50 14Z"/>
+              <text x="50" y="71" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="25">32</text>
+            </svg>
+            <span class="brand-text"><span class="brand-name">Thirty2</span><span class="brand-tag">Motor Oil · Ireland</span></span>
+          </a>
+          <p>Distributing NK2X lubricants across Ireland.</p>
+        </div>
+        <div>
+          <h2>Shop</h2>
+          <ul>
+            <li><a href="shop.html?cat=engine">Engine oils</a></li>
+            <li><a href="shop.html?cat=gear">Gear oils</a></li>
+            <li><a href="shop.html?cat=commercial">Commercial &amp; fleet</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Company</h2>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="delivery.html">Delivery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Get in touch</h2>
+          <ul>
+            <li><a href="tel:+35310000000">+353 1 000 0000</a></li>
+            <li><a href="mailto:sales@example.ie">sales@example.ie</a></li>
+            <li>Mon–Fri, 8am–5pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>© <span id="year">2026</span> Thirty2 Motor Oil Ireland. Sales mockup, not a live store.</span>
+        <span>NK2X is shown as a distributed brand. Product details are placeholders.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>
