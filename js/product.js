@@ -74,7 +74,7 @@
   root.innerHTML =
     '<div class="wrap">' +
       '<article class="pdp" aria-labelledby="pdp-title">' +
-        '<div class="pdp-media">' + T.jugSVG(p, { uid: '-pdp' }) + '</div>' +
+        '<div class="pdp-media" id="pdp-media">' + T.packArtSVG(p, def.size, { uid: '-pdp' }) + '</div>' +
         '<div class="pdp-info">' +
           '<p class="eyebrow"><a href="shop.html?cat=' + CAT_PARAM[p.category] + '">' + p.category + '</a></p>' +
           '<h1 id="pdp-title" class="pdp-title">' + p.name + '</h1>' +
@@ -152,6 +152,11 @@
       var k = currentPack();
       priceEl.textContent = T.fmt(k.price);
       unitEl.textContent = k.size + ' · ' + perLitre(k);
+      var media = document.getElementById('pdp-media');
+      media.innerHTML = T.packArtSVG(p, k.size, { uid: '-pdp' });
+      media.classList.remove('is-swapping');
+      void media.offsetWidth; /* restart the fade-in */
+      media.classList.add('is-swapping');
     }
     if (e.target === qty) clampQty();
   });

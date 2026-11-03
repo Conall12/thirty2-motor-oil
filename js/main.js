@@ -111,7 +111,7 @@
         var p = T.getProduct(i.id);
         if (!p) return '';
         return '<li class="cart-line">' +
-          '<div class="cart-thumb">' + T.jugSVG(p, { decorative: true, uid: '-c' + idx }) + '</div>' +
+          '<div class="cart-thumb">' + T.packArtSVG(p, i.size, { decorative: true, uid: '-c' + idx }) + '</div>' +
           '<div class="cart-info">' +
             '<p class="cart-name">' + p.name + '</p>' +
             '<p class="cart-meta">' + i.size + ' · ' + T.fmt(priceFor(i)) + '</p>' +

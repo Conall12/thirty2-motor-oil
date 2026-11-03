@@ -76,7 +76,7 @@
     },
     {
       id: 'nk2x-10w40-hd', name: 'NK2X Fleet 10W-40', viscosity: '10W-40', type: 'Fully synthetic',
-      category: 'Commercial & fleet', accent: '#f4f3f0',
+      category: 'Commercial & fleet', accent: '#f4f3f0', cardArt: '205L',
       packs: [{ size: '5L', price: 34.99 }, { size: '20L', price: 124.99 }, { size: '205L', price: 1149.0 }],
       specs: ['ACEA E6', 'Euro VI', 'Heavy duty'],
       blurb: 'Heavy-duty synthetic for vans, trucks and mixed commercial fleets.'
@@ -84,7 +84,7 @@
   ];
 
   function fmt(n) {
-    return '£' + n.toFixed(2);
+    return '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
   function fromPrice(p) {
@@ -115,6 +115,79 @@
       '</svg>';
   }
 
+  function a11y(p, opts, what) {
+    return opts.decorative ? 'aria-hidden="true" focusable="false"'
+      : 'role="img" aria-label="' + p.name + ' ' + what + ' (illustration)"';
+  }
+
+  /* 20L pail: tapered steel pail with lid, wire handle and pour spout. */
+  function pailSVG(p, opts) {
+    opts = opts || {};
+    var uid = p.id + (opts.uid || '') + '-pail';
+    return '' +
+      '<svg class="jug pail" viewBox="0 0 160 200" ' + a11y(p, opts, '20 litre pail') + '>' +
+        '<defs>' +
+          '<linearGradient id="pb-' + uid + '" x1="0" x2="1">' +
+            '<stop offset="0" stop-color="#151515"/><stop offset=".4" stop-color="#3d3d3d"/><stop offset=".6" stop-color="#2c2c2c"/><stop offset="1" stop-color="#0f0f0f"/>' +
+          '</linearGradient>' +
+        '</defs>' +
+        '<ellipse cx="80" cy="193" rx="58" ry="6" fill="#000" opacity=".13"/>' +
+        '<path d="M32 44 Q80 0 128 44" fill="none" stroke="#4a4a4a" stroke-width="3"/>' +
+        '<rect x="64" y="14" width="32" height="9" rx="4.5" fill="#0d0d0d"/>' +
+        '<path d="M30 44 H130 L123 185 Q123 190 118 190 H42 Q37 190 37 185 Z" fill="url(#pb-' + uid + ')"/>' +
+        '<rect x="26" y="34" width="108" height="13" rx="4" fill="#0c0c0c"/>' +
+        '<rect x="104" y="24" width="14" height="11" rx="2" fill="#1e1e1e"/>' +
+        '<rect x="101" y="21" width="20" height="5" rx="2" fill="#2a2a2a"/>' +
+        '<rect x="31" y="58" width="98" height="4" rx="2" fill="#000" opacity=".35"/>' +
+        '<rect x="36" y="174" width="88" height="4" rx="2" fill="#000" opacity=".35"/>' +
+        '<rect x="45" y="74" width="70" height="88" rx="5" fill="#151515" stroke="#2c2c2c"/>' +
+        '<text x="80" y="110" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="21" fill="#f4f3f0" letter-spacing="-.5">NK2X</text>' +
+        '<text x="80" y="125" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="9" fill="#bdbab3">' + p.viscosity + ' · 20L</text>' +
+        '<path d="M45 146 L115 136 V143 L45 153Z" fill="' + p.accent + '"/>' +
+        '<rect x="38" y="64" width="4" height="108" rx="2" fill="#fff" opacity=".07"/>' +
+      '</svg>';
+  }
+
+  /* 205L drum: steel barrel with top/bottom chimes, rolling hoops and bungs. */
+  function drumSVG(p, opts) {
+    opts = opts || {};
+    var uid = p.id + (opts.uid || '') + '-drum';
+    return '' +
+      '<svg class="jug drum" viewBox="0 0 160 200" ' + a11y(p, opts, '205 litre drum') + '>' +
+        '<defs>' +
+          '<linearGradient id="db-' + uid + '" x1="0" x2="1">' +
+            '<stop offset="0" stop-color="#121212"/><stop offset=".22" stop-color="#2e2e2e"/><stop offset=".42" stop-color="#474747"/><stop offset=".62" stop-color="#2a2a2a"/><stop offset="1" stop-color="#0d0d0d"/>' +
+          '</linearGradient>' +
+          '<linearGradient id="dh-' + uid + '" x1="0" x2="1">' +
+            '<stop offset="0" stop-color="#0a0a0a"/><stop offset=".42" stop-color="#555"/><stop offset="1" stop-color="#0a0a0a"/>' +
+          '</linearGradient>' +
+        '</defs>' +
+        '<ellipse cx="80" cy="194" rx="64" ry="5" fill="#000" opacity=".14"/>' +
+        '<rect x="44" y="3" width="14" height="7" rx="2" fill="#1c1c1c"/>' +
+        '<rect x="100" y="4" width="10" height="6" rx="2" fill="#1c1c1c"/>' +
+        '<rect x="24" y="12" width="112" height="178" rx="7" fill="url(#db-' + uid + ')"/>' +
+        '<rect x="20" y="8" width="120" height="9" rx="4" fill="url(#dh-' + uid + ')"/>' +
+        '<rect x="20" y="183" width="120" height="9" rx="4" fill="url(#dh-' + uid + ')"/>' +
+        '<rect x="21" y="56" width="118" height="7" rx="3.5" fill="url(#dh-' + uid + ')"/>' +
+        '<rect x="21" y="140" width="118" height="7" rx="3.5" fill="url(#dh-' + uid + ')"/>' +
+        '<rect x="38" y="72" width="84" height="60" rx="5" fill="#151515" stroke="#2c2c2c"/>' +
+        '<text x="80" y="100" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="21" fill="#f4f3f0" letter-spacing="-.5">NK2X</text>' +
+        '<text x="80" y="114" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="9" fill="#bdbab3">' + p.viscosity + ' · 205L</text>' +
+        '<path d="M38 124 L122 118 V124 L38 130Z" fill="' + p.accent + '"/>' +
+        '<rect x="48" y="20" width="4" height="164" rx="2" fill="#fff" opacity=".07"/>' +
+        '<rect x="40" y="152" width="80" height="2" rx="1" fill="#000" opacity=".3"/>' +
+        '<rect x="40" y="40" width="80" height="2" rx="1" fill="#000" opacity=".3"/>' +
+      '</svg>';
+  }
+
+  /* Pick the right container for a pack size: jug up to 5L, pail for 20L, drum for 205L. */
+  function packArtSVG(p, size, opts) {
+    var l = parseFloat(size) || 0;
+    if (l >= 200) return drumSVG(p, opts);
+    if (l >= 20) return pailSVG(p, opts);
+    return jugSVG(p, opts);
+  }
+
   /* Product card used on the home page and the shop grid. */
   function cardHTML(p, opts) {
     opts = opts || {};
@@ -122,7 +195,7 @@
     var tag = opts.headingLevel || 'h3';
     var chips = opts.chips ? '<ul class="chips" aria-label="Specifications">' + p.specs.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul>' : '';
     return '<article class="p-card">' +
-      '<div class="p-card-media">' + jugSVG(p, { decorative: true, uid: opts.uid || '' }) + '</div>' +
+      '<div class="p-card-media">' + packArtSVG(p, p.cardArt || pack.size, { decorative: true, uid: opts.uid || '' }) + '</div>' +
       '<div class="p-card-body">' +
         '<' + tag + ' class="p-card-title"><a href="product.html?id=' + p.id + '">' + p.name + '</a></' + tag + '>' +
         '<p class="p-card-type">' + p.type + ' · ' + p.category + '</p>' +
@@ -138,6 +211,9 @@
   window.Thirty2.fmt = fmt;
   window.Thirty2.fromPrice = fromPrice;
   window.Thirty2.jugSVG = jugSVG;
+  window.Thirty2.pailSVG = pailSVG;
+  window.Thirty2.drumSVG = drumSVG;
+  window.Thirty2.packArtSVG = packArtSVG;
   window.Thirty2.getProduct = function (id) {
     return PRODUCTS.filter(function (p) { return p.id === id; })[0];
   };

@@ -219,6 +219,28 @@
       </div>
     </section>
 
+    <!-- ===== Pack sizes: 1L to 205L ===== -->
+    <section class="section" style="padding-top:0" aria-labelledby="packs-title">
+      <div class="wrap">
+        <div class="packs">
+          <div class="packs-copy">
+            <p class="eyebrow">Every pack size</p>
+            <h2 id="packs-title">From a 1L top-up to a 205L drum</h2>
+            <p>Bottles for the boot, 20L pails for the workshop floor and 205L drums for depots and fleets. We deliver all of them, including palletised drums for trade customers.</p>
+            <a class="btn btn-dark" href="shop.html?cat=commercial">
+              Shop bulk &amp; fleet
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <ul class="packs-line" id="packs-line">
+            <li class="pack pack-jug"><div class="pack-art" data-art="nk2x-5w30|4L"></div><p><strong>1–5L</strong><span>Home &amp; top-ups</span></p></li>
+            <li class="pack pack-pail"><div class="pack-art" data-art="nk2x-5w30|20L"></div><p><strong>20L pail</strong><span>Garages &amp; workshops</span></p></li>
+            <li class="pack pack-drum"><div class="pack-art" data-art="nk2x-10w40-hd|205L"></div><p><strong>205L drum</strong><span>Fleets &amp; depots</span></p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="section" style="padding-top:0" aria-labelledby="cta-title">
       <div class="wrap">
         <div class="cta-band">
@@ -290,6 +312,10 @@
       var el = document.getElementById('featured');
       el.innerHTML = T.products.filter(function (p) { return p.featured; })
         .map(function (p) { return T.cardHTML(p, { uid: '-f' }); }).join('');
+      document.querySelectorAll('[data-art]').forEach(function (n, i) {
+        var a = n.getAttribute('data-art').split('|');
+        n.innerHTML = T.packArtSVG(T.getProduct(a[0]), a[1], { decorative: true, uid: '-pk' + i });
+      });
     })();
   </script>
 </body>
